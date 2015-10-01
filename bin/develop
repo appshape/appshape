@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source .iterm.bash
+
+currentDir=`pwd`
+cd "$currentDir/app/assets/remark" && grunt dist --force
+tab "$currentDir/app/assets/remark" "grunt watch"
+cd $currentDir && rails s
