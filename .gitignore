@@ -13,3 +13,5 @@
 /tmp
 .env.local
 .env.production
+/public/assets
+/app/assets/remark/node_modules
