@@ -8,9 +8,12 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'dotenv-rails'
+gem 'slim-rails'
+gem
 
 group :development, :test do
   gem 'byebug'
+  gem 'rspec-rails'
 end
 
 group :development do
