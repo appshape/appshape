@@ -16,13 +16,13 @@ class OmniauthService
 
   private
   def user
-    @user ||= @current_user || identity.user || User.find_by(email: @oauth['email']) || create_user
+    @user ||= @current_user || identity.user || User.find_by(email: oauth_email) || create_user
   end
 
   def create_user
     User.new(
       name: @oauth['extra']['raw_info']['name'],
-      email: @oauth['email'],
+      email: oauth_email,
       password: Devise.friendly_token[0, 20]
     ).tap do |user|
       user.skip_confirmation!
@@ -32,5 +32,9 @@ class OmniauthService
 
   def identity
     @identity ||= Identity.where(uid: @oauth['uid'], provider: @oauth['provider']).first_or_create!
+  end
+
+  def oauth_email
+    @oauth['email'] || @oauth['info']['email'] || @oauth['extra']['raw_info']['email']
   end
 end
