@@ -18,6 +18,7 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'bootstrap-social-rails'
 gem 'font-awesome-rails', '4.3.0.0'
 gem 'simple_form'
+gem 'rails-i18n', '~> 4.0.0'
 
 group :development, :test do
   gem 'byebug'

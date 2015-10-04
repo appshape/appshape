@@ -1,11 +1,11 @@
 .loginColumns.animated.fadeInDown
   .row
-    .h2.text-center Change your password
+    .h2.text-center= t('edit_passwords_title')
     .ibox-content
       = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
         = f.input :reset_password_token, as: :hidden
-        = f.input :password, label: 'New password'
-        = f.input :password_confirmation, label: 'Confirm new password'
-        = f.submit 'Change my password', class: 'btn btn-primary block full-width m-b'
-        = link_to content_tag(:div, 'Back to login'), new_session_path(resource_name)
+        = f.input :password, label: t('edit_passwords_new_password_label')
+        = f.input :password_confirmation, label: t('edit_passwords_confirm_new_password_label')
+        = f.submit t('edit_passwords_submit'), class: 'btn btn-primary block full-width m-b'
+        = link_to content_tag(:div, t('back_to_login')), new_session_path(resource_name)
 

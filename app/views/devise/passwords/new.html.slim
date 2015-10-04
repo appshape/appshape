@@ -1,9 +1,9 @@
 .loginColumns.animated.fadeInDown
   .row
-    .h2.text-center Forgot your password?
+    .h2.text-center= t('new_passwords_title')
     .ibox-content
       = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, class: 'm-t') do |f|
         = f.input :email
-        = f.submit 'Send reset password instructions', class: 'btn btn-primary block full-width m-b'
-        = link_to content_tag(:div, 'Back to login'), new_session_path(resource_name)
+        = f.submit t('new_passwords_submit'), class: 'btn btn-primary block full-width m-b'
+        = link_to content_tag(:div, t('back_to_login')), new_session_path(resource_name)
 

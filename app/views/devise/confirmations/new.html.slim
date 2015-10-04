@@ -1,10 +1,10 @@
 .loginColumns.animated.fadeInDown
   .row
     .col-md-12
-      .h2.text-center Resend confirmation instructions
+      .h2.text-center= t('resend_confirmation_instructions_title')
       .ibox-content
         = simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }, class: 'm-t') do |f|
           = f.input :email
-          = f.submit 'Resend confirmation instructions', class: 'btn btn-primary block full-width m-b'
-          = link_to content_tag(:div, 'Back to login'), new_session_path(resource_name)
+          = f.submit t('resend_confirmation_instructions_submit'), class: 'btn btn-primary block full-width m-b'
+          = link_to content_tag(:div, t('back_to_login')), new_session_path(resource_name)
 
