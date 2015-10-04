@@ -9,15 +9,23 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'dotenv-rails'
 gem 'slim-rails'
-gem
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'bootstrap-sass', '~> 3.3.5'
+gem 'font-awesome-rails', '4.3.0.0'
+gem 'simple_form'
 
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'letter_opener'
 end
 
