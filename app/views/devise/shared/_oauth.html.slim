@@ -1,3 +1,8 @@
-.ibox-content
-  = resource_class.omniauth_providers.each do |provider|
-    = link_to provider, omniauth_authorize_path(resource_name, provider)
+div.text-center
+  ul.list-inline
+    - resource_class.omniauth_providers.each do |provider|
+      - css_provider = css_provider_name(provider)
+      li
+        = link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-small btn-social btn-#{css_provider}" do
+          = content_tag(:i, nil, class: "fa fa-#{css_provider}")
+          = css_provider.capitalize

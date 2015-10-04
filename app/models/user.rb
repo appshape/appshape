@@ -6,5 +6,6 @@ class User < ActiveRecord::Base
 
   has_many :identities
 
+  validates :email, presence: true
   validates :name, presence: true
 end
