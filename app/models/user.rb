@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
   has_many :identities
   belongs_to :personal_organization, class_name: Organization::PersonalOrganization, foreign_key: :personal_organization_id, dependent: :destroy
 
+  has_many :organization_users
+  has_many :organizations, through: :organization_users
+
+
   validates :email, presence: true
   validates :name,
             presence: true,
