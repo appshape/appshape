@@ -1,5 +1,5 @@
 class OrganizationUser < ActiveRecord::Base
-  enum role: [:member, :owner]
+  enum role: [:member, :admin]
 
   belongs_to :user
   belongs_to :organization
