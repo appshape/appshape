@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :organization, class: Organization do
-    name 'Fighters'
-    owner {create(:user)}
+    name Faker::Company.name
   end
 end

@@ -5,10 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :trackable, :validatable, :confirmable, :omniauthable
 
   has_many :identities
-  belongs_to :personal_organization, class_name: Organization::PersonalOrganization, foreign_key: :personal_organization_id, dependent: :destroy
 
   has_many :organization_users
   has_many :organizations, through: :organization_users
+
+  has_many :created_organizations, class_name: Organization, foreign_key: :creator_id
+  has_one :personal_organization, class_name: Organization::PersonalOrganization, foreign_key: :creator_id, dependent: :destroy
 
 
   validates :email, presence: true
