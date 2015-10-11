@@ -5,7 +5,7 @@ class Organization::OrganizationCreator
   end
 
   def execute
-    Organization.create(name: @name).tap do |organization|
+    Organization.create(name: @name, creator: @user).tap do |organization|
       OrganizationUser.create(user: @user, organization: organization, role: :owner)
     end
   end
