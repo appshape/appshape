@@ -1,0 +1,125 @@
+= simple_form_for @test do |f|
+  .row.white-bg#sticker{style="z-index:1000;"}
+    .col-lg-12.action-bar{style="padding: 10px;"}
+      = f.submit 'Save', class: 'btn btn-primary'
+      .btn-group.pull-right
+        = link_to 'Basics', '#', class: 'btn btn-outline btn-success'
+        = link_to 'Request', '#', class: 'btn btn-outline btn-success'
+        = link_to 'Authentication', '#', class: 'btn btn-outline btn-success'
+        = link_to 'Assertions', '#', class: 'btn btn-outline btn-success'
+        = link_to 'Data points', '#', class: 'btn btn-outline btn-success'
+        = link_to 'Notifications', '#', class: 'btn btn-outline btn-success'
+
+  .wrapper.wrapper-content.animated.fadeInRight
+    .row
+      .col-lg-12
+        .ibox.float-e-margins
+          .ibox-title
+            h5
+              | Basics
+              small &nbsp; information required for every test
+            .ibox-tools
+              a.collapse-link
+                i.fa.fa-chevron-up
+          .ibox-content
+            = f.input :name
+            = f.input :description, as: :string
+            = f.input :locations, as: :select, collection: Location.active.all, value_method: :code, input_html: { multiple: true, class: 'select2' }
+
+    = f.simple_fields_for :request do |r|
+      .row
+        .col-lg-12
+          .ibox.float-e-margins
+            .ibox-title
+              h5
+                | Request
+                small &nbsp; configure http call that AppShape will be executing against your app
+              .ibox-tools
+                a.collapse-link
+                  i.fa.fa-chevron-up
+            .ibox-content
+              .row
+                .col-lg-2
+                  = r.input :http_method, as: :select, collection: HttpMethod.all, value_method: :code, include_blank: false, required: false, label: '&nbsp;'.html_safe
+                .col-lg-10
+                  = r.input :url
+              .row
+                .col-lg-12
+                  .form-group.string.optional
+                    label.string.optional.control-label
+                      | Http Headers
+                      span.small.with-margin-left
+                        = link_to 'Add', '#', class: 'headers-add-button'
+                    #headers{data-values="#{[]}"}
+
+                  .form-group.string.optional
+                    label.string.optional.control-label
+                      | Query string parameters
+                      span.small.with-margin-left
+                        = link_to 'Add', '#', class: 'url-params-add-button'
+                    #url-params{data-values="#{[]}"}
+
+                  .form-group.string.optional
+                    label.string.optional.control-label
+                      | Form parameters
+                      span.small.with-margin-left
+                        = link_to 'Add', '#', class: 'form-params-add-button'
+                    #form-params{data-values="#{[]}"}
+
+      .row
+        .col-lg-12
+          .ibox.float-e-margins
+            .ibox-title
+              h5
+                | Authentication
+                small &nbsp; please provide user and password for basic auth if required
+              .ibox-tools
+                a.collapse-link
+                  i.fa.fa-chevron-up
+            .ibox-content
+              .row
+                .col-lg-6
+                  = r.input :basic_auth_user, as: :string
+                .col-lg-6
+                  = r.input :basic_auth_password, as: :string
+
+      .row
+        .col-lg-12
+          .ibox.float-e-margins
+            .ibox-title
+              h5
+                | Assertions
+                small &nbsp; select from which locations we should run your test
+              .ibox-tools
+                a.collapse-link
+                  i.fa.fa-chevron-up
+            .ibox-content
+
+
+      .row
+        .col-lg-12
+          .ibox.float-e-margins
+            .ibox-title
+              h5
+                | Data points
+                small &nbsp; select from which locations we should run your test
+              .ibox-tools
+                a.collapse-link
+                  i.fa.fa-chevron-up
+            .ibox-content
+
+
+      .row
+        .col-lg-12
+          .ibox.float-e-margins
+            .ibox-title
+              h5
+                | Notifications
+                small &nbsp; select from which locations we should run your test
+              .ibox-tools
+                a.collapse-link
+                  i.fa.fa-chevron-up
+            .ibox-content
+
+
+

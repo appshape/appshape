@@ -17,4 +17,11 @@
 //= require metisMenu/jquery.metisMenu.js
 //= require pace/pace.min.js
 //= require slimscroll/jquery.slimscroll.min.js
+//= require staps/jquery.steps.min.js
+//= require nouslider/nouislider.min
+//= require typeahead/typeahead.bundle.min
+//= require key_value_editor
+//= require select2/select2.full.min
+//= require sticky/jquery.sticky
+//= require tests
 //= require_tree .

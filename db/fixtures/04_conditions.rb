@@ -1,0 +1,15 @@
+Condition.seed(:id, :code,
+  { id: 1, code: :equal },
+  { id: 2, code: :not_equal },
+  { id: 3, code: :empty },
+  { id: 4, code: :not_empty },
+  { id: 5, code: :contain },
+  { id: 6, code: :not_contain },
+  { id: 7, code: :less_than },
+  { id: 8, code: :less_than_or_equal },
+  { id: 9, code: :greater_than },
+  { id: 10, code: :greater_than_or_equal },
+  { id: 11, code: :has_key },
+  { id: 12, code: :has_value },
+  { id: 13, code: :is_null }
+)
