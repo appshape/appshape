@@ -79,11 +79,11 @@ ActiveRecord::Schema.define(version: 20151014193329) do
   end
 
   create_table "sources", force: :cascade do |t|
-    t.string   "code",                          null: false
-    t.boolean  "path_required", default: false, null: false
+    t.string   "code",                              null: false
+    t.boolean  "property_required", default: false, null: false
     t.integer  "position"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "tests", force: :cascade do |t|

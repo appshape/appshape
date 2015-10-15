@@ -20,8 +20,10 @@
 //= require staps/jquery.steps.min.js
 //= require nouslider/nouislider.min
 //= require typeahead/typeahead.bundle.min
-//= require key_value_editor
+//= require json_array_editor.js.coffee
 //= require select2/select2.full.min
 //= require sticky/jquery.sticky
+//= require handlebars/handlebars
+//= require chained/jquery.chained.min
 //= require tests
 //= require_tree .

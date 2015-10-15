@@ -3,22 +3,22 @@
     .col-lg-12.action-bar{style="padding: 10px;"}
       = f.submit 'Save', class: 'btn btn-primary'
       .btn-group.pull-right
-        = link_to 'Basics', '#', class: 'btn btn-outline btn-success'
-        = link_to 'Request', '#', class: 'btn btn-outline btn-success'
-        = link_to 'Authentication', '#', class: 'btn btn-outline btn-success'
-        = link_to 'Assertions', '#', class: 'btn btn-outline btn-success'
-        = link_to 'Data points', '#', class: 'btn btn-outline btn-success'
-        = link_to 'Notifications', '#', class: 'btn btn-outline btn-success'
+        = link_to 'Basics', '#', class: 'btn btn-outline btn-success', rel: 'section-basics'
+        = link_to 'Request', '#', class: 'btn btn-outline btn-success', rel: 'section-request'
+        = link_to 'Authentication', '#', class: 'btn btn-outline btn-success', rel: 'section-authentication'
+        = link_to 'Assertions', '#', class: 'btn btn-outline btn-success', rel: 'section-assertions'
+        = link_to 'Data points', '#', class: 'btn btn-outline btn-success', rel: 'section-data-points'
+        = link_to 'Notifications', '#', class: 'btn btn-outline btn-success', rel: 'section-notifications'
 
   .wrapper.wrapper-content.animated.fadeInRight
     .row
       .col-lg-12
-        .ibox.float-e-margins
+        .ibox.float-e-margins#section-basics
           .ibox-title
             h5
               | Basics
               small &nbsp; information required for every test
-            .ibox-tools
+            .pull-right
               a.collapse-link
                 i.fa.fa-chevron-up
           .ibox-content
@@ -29,12 +29,12 @@
     = f.simple_fields_for :request do |r|
       .row
         .col-lg-12
-          .ibox.float-e-margins
+          .ibox.float-e-margins#section-request
             .ibox-title
               h5
                 | Request
                 small &nbsp; configure http call that AppShape will be executing against your app
-              .ibox-tools
+              .pull-right
                 a.collapse-link
                   i.fa.fa-chevron-up
             .ibox-content
@@ -68,12 +68,12 @@
 
       .row
         .col-lg-12
-          .ibox.float-e-margins
+          .ibox.float-e-margins#section-authentication
             .ibox-title
               h5
                 | Authentication
                 small &nbsp; please provide user and password for basic auth if required
-              .ibox-tools
+              .pull-right
                 a.collapse-link
                   i.fa.fa-chevron-up
             .ibox-content
@@ -85,41 +85,50 @@
 
       .row
         .col-lg-12
-          .ibox.float-e-margins
+          .ibox.float-e-margins#section-assertions
             .ibox-title
               h5
                 | Assertions
+                span.small.with-margin-left
+                  = link_to 'Add', '#', class: 'assertions-add-button'
                 small &nbsp; select from which locations we should run your test
-              .ibox-tools
+              .pull-right
                 a.collapse-link
                   i.fa.fa-chevron-up
             .ibox-content
+              #assertions{data-values="#{[]}"}
 
 
       .row
         .col-lg-12
-          .ibox.float-e-margins
+          .ibox.float-e-margins#section-data-points
             .ibox-title
               h5
                 | Data points
+                span.small.with-margin-left
+                  = link_to 'Add', '#', class: 'data-points-add-button'
                 small &nbsp; select from which locations we should run your test
-              .ibox-tools
+              .pull-right
                 a.collapse-link
                   i.fa.fa-chevron-up
             .ibox-content
+              #data-points{data-values="#{[]}"}
 
 
       .row
         .col-lg-12
-          .ibox.float-e-margins
+          .ibox.float-e-margins#section-notifications
             .ibox-title
               h5
                 | Notifications
                 small &nbsp; select from which locations we should run your test
-              .ibox-tools
+              .pull-right
                 a.collapse-link
                   i.fa.fa-chevron-up
             .ibox-content
 
 
 
+= render partial: 'tests/data_point_row_template'
+= render partial: 'tests/assertion_row_template'
+= render partial: 'tests/key_value_row_template'

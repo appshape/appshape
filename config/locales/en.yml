@@ -59,4 +59,17 @@ en:
   source_body_as_text: Body treated as plain text
   source_status_code: Status code
   source_response_time: Response time
+  condition_equal: Equal
+  condition_not_equal: Not equal
+  condition_empty: Is empty
+  condition_not_empty: Is not empty
+  condition_contain: Contain
+  condition_not_contain: Does not contain
+  condition_less_than: Less than
+  condition_less_than_or_equal: Less than or equal
+  condition_greater_than: Greater than
+  condition_greater_than_or_equal: Greater than or equal
+  condition_has_key: Has key
+  condition_has_value: Has value
+  condition_is_null: Is null
 
