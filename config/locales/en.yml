@@ -38,3 +38,38 @@ en:
   new_sessions_submit: "Login"
   registration_link: "Don\'t have an account?"
   resend_confirmation_instructions_link: "Didn\'t receive confirmation instructions?"
+  new_check_header: "Creating new %{type} check"
+  http_method_get: GET
+  http_method_post: POST
+  http_method_put: PUT
+  http_method_patch: PATCH
+  http_method_delete: DELETE
+  http_method_options: OPTIONS
+  http_method_head: HEAD
+  location_new_york: 'New York, USA'
+  location_amsterdam: 'Amsterdam, Holland'
+  location_san_francisco: 'San Francisco, USA'
+  location_singapore: 'Singapore, SN'
+  location_london: 'London, England'
+  location_frankfurt: 'Frankfurt, Germany'
+  location_toronto: 'Toronto, Canada'
+  source_headers: Headers
+  source_body_as_json: Body treated as JSON
+  source_body_as_xml: Body treated as XML
+  source_body_as_text: Body treated as plain text
+  source_status_code: Status code
+  source_response_time: Response time
+  condition_equal: Equal
+  condition_not_equal: Not equal
+  condition_empty: Is empty
+  condition_not_empty: Is not empty
+  condition_contain: Contain
+  condition_not_contain: Does not contain
+  condition_less_than: Less than
+  condition_less_than_or_equal: Less than or equal
+  condition_greater_than: Greater than
+  condition_greater_than_or_equal: Greater than or equal
+  condition_has_key: Has key
+  condition_has_value: Has value
+  condition_is_null: Is null
+
