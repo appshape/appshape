@@ -11,10 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151011185206) do
+ActiveRecord::Schema.define(version: 20151014193329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "conditions", force: :cascade do |t|
+    t.string   "code",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "conditions_sources", id: false, force: :cascade do |t|
+    t.integer "condition_id"
+    t.integer "source_id"
+  end
+
+  add_index "conditions_sources", ["condition_id"], name: "index_conditions_sources_on_condition_id", using: :btree
+  add_index "conditions_sources", ["source_id"], name: "index_conditions_sources_on_source_id", using: :btree
+
+  create_table "http_headers", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "http_headers", ["name"], name: "index_http_headers_on_name", unique: true, using: :btree
+
+  create_table "http_methods", force: :cascade do |t|
+    t.string   "code",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "http_methods", ["code"], name: "index_http_methods_on_code", unique: true, using: :btree
 
   create_table "identities", force: :cascade do |t|
     t.integer  "user_id"
@@ -25,6 +55,13 @@ ActiveRecord::Schema.define(version: 20151011185206) do
   end
 
   add_index "identities", ["provider", "uid"], name: "index_identities_on_provider_and_uid", unique: true, using: :btree
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "code",                      null: false
+    t.boolean  "active",     default: true, null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
   create_table "organization_users", id: false, force: :cascade do |t|
     t.integer "organization_id", null: false
@@ -59,6 +96,37 @@ ActiveRecord::Schema.define(version: 20151011185206) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.integer  "test_id"
+    t.string   "url",                 null: false
+    t.string   "http_method",         null: false
+    t.text     "description",         null: false
+    t.string   "basic_auth_user"
+    t.string   "basic_auth_password"
+    t.json     "headers"
+    t.json     "url_params"
+    t.json     "form_params"
+    t.text     "body"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  create_table "sources", force: :cascade do |t|
+    t.string   "code",                              null: false
+    t.boolean  "property_required", default: false, null: false
+    t.integer  "position"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "locations",                array: true
   end
 
   create_table "users", force: :cascade do |t|

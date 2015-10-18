@@ -3,5 +3,8 @@ Rails.application.routes.draw do
 
   resources :applications
   resources :organizations
+  resources :http_headers, only: :index
+  resources :tests
+
   root 'applications#index'
 end

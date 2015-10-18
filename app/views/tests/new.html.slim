@@ -1,0 +1,134 @@
+= simple_form_for @test do |f|
+  .row.white-bg#sticker{style="z-index:1000;"}
+    .col-lg-12.action-bar{style="padding: 10px;"}
+      = f.submit 'Save', class: 'btn btn-primary'
+      .btn-group.pull-right
+        = link_to 'Basics', '#', class: 'btn btn-outline btn-success', rel: 'section-basics'
+        = link_to 'Request', '#', class: 'btn btn-outline btn-success', rel: 'section-request'
+        = link_to 'Authentication', '#', class: 'btn btn-outline btn-success', rel: 'section-authentication'
+        = link_to 'Assertions', '#', class: 'btn btn-outline btn-success', rel: 'section-assertions'
+        = link_to 'Data points', '#', class: 'btn btn-outline btn-success', rel: 'section-data-points'
+        = link_to 'Notifications', '#', class: 'btn btn-outline btn-success', rel: 'section-notifications'
+
+  .wrapper.wrapper-content.animated.fadeInRight
+    .row
+      .col-lg-12
+        .ibox.float-e-margins#section-basics
+          .ibox-title
+            h5
+              | Basics
+              small &nbsp; information required for every test
+            .pull-right
+              a.collapse-link
+                i.fa.fa-chevron-up
+          .ibox-content
+            = f.input :name
+            = f.input :description, as: :string
+            = f.input :locations, as: :select, collection: Location.active.all, value_method: :code, input_html: { multiple: true, class: 'select2' }
+
+    = f.simple_fields_for :request do |r|
+      .row
+        .col-lg-12
+          .ibox.float-e-margins#section-request
+            .ibox-title
+              h5
+                | Request
+                small &nbsp; configure http call that AppShape will be executing against your app
+              .pull-right
+                a.collapse-link
+                  i.fa.fa-chevron-up
+            .ibox-content
+              .row
+                .col-lg-2
+                  = r.input :http_method, as: :select, collection: HttpMethod.all, value_method: :code, include_blank: false, required: false, label: '&nbsp;'.html_safe
+                .col-lg-10
+                  = r.input :url
+              .row
+                .col-lg-12
+                  .form-group.string.optional
+                    label.string.optional.control-label
+                      | Http Headers
+                      span.small.with-margin-left
+                        = link_to 'Add', '#', class: 'headers-add-button'
+                    #headers{data-values="#{[]}"}
+
+                  .form-group.string.optional
+                    label.string.optional.control-label
+                      | Query string parameters
+                      span.small.with-margin-left
+                        = link_to 'Add', '#', class: 'url-params-add-button'
+                    #url-params{data-values="#{[]}"}
+
+                  .form-group.string.optional
+                    label.string.optional.control-label
+                      | Form parameters
+                      span.small.with-margin-left
+                        = link_to 'Add', '#', class: 'form-params-add-button'
+                    #form-params{data-values="#{[]}"}
+
+      .row
+        .col-lg-12
+          .ibox.float-e-margins#section-authentication
+            .ibox-title
+              h5
+                | Authentication
+                small &nbsp; please provide user and password for basic auth if required
+              .pull-right
+                a.collapse-link
+                  i.fa.fa-chevron-up
+            .ibox-content
+              .row
+                .col-lg-6
+                  = r.input :basic_auth_user, as: :string
+                .col-lg-6
+                  = r.input :basic_auth_password, as: :string
+
+      .row
+        .col-lg-12
+          .ibox.float-e-margins#section-assertions
+            .ibox-title
+              h5
+                | Assertions
+                span.small.with-margin-left
+                  = link_to 'Add', '#', class: 'assertions-add-button'
+                small &nbsp; select from which locations we should run your test
+              .pull-right
+                a.collapse-link
+                  i.fa.fa-chevron-up
+            .ibox-content
+              #assertions{data-values="#{[]}"}
+
+
+      .row
+        .col-lg-12
+          .ibox.float-e-margins#section-data-points
+            .ibox-title
+              h5
+                | Data points
+                span.small.with-margin-left
+                  = link_to 'Add', '#', class: 'data-points-add-button'
+                small &nbsp; select from which locations we should run your test
+              .pull-right
+                a.collapse-link
+                  i.fa.fa-chevron-up
+            .ibox-content
+              #data-points{data-values="#{[]}"}
+
+
+      .row
+        .col-lg-12
+          .ibox.float-e-margins#section-notifications
+            .ibox-title
+              h5
+                | Notifications
+                small &nbsp; select from which locations we should run your test
+              .pull-right
+                a.collapse-link
+                  i.fa.fa-chevron-up
+            .ibox-content
+
+
+
+= render partial: 'tests/data_point_row_template'
+= render partial: 'tests/assertion_row_template'
+= render partial: 'tests/key_value_row_template'

@@ -20,6 +20,7 @@ gem 'font-awesome-rails', '4.3.0.0'
 gem 'simple_form'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'virtus'
+gem 'seed-fu'
 
 group :development, :test do
   gem 'byebug'
