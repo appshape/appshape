@@ -1,1 +1,14 @@
-| all orgs
+= render partial: 'organizations/partials/index_bar'
+
+.row
+  .col-lg-12
+    .wrapper.wrapper-content.animated.fadeInUp
+      .ibox
+        .ibox-title
+          h5 All organizations assigned to this account
+          .ibox-tools
+            = link_to 'Create new organization', new_organization_path, class: 'btn btn-primary btn-xs'
+
+        .ibox-content
+          .project-list
+            = render partial: 'organizations/partials/organizations', locals: {user_organizations_presenter: @user_organizations_presenter}

@@ -18,10 +18,15 @@ class User < ActiveRecord::Base
             presence: true,
             uniqueness: true
 
+  before_validation :ensure_name!
   after_create :create_personal_organization!
 
   private
   def create_personal_organization!
     Organization::PersonalOrganizationCreator.new(self, self.name).execute
+  end
+
+  def ensure_name!
+    self.name = NameGenerator.new.generate_from_email(self.email) unless self.name.present?
   end
 end
