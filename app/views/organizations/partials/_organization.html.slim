@@ -1,0 +1,9 @@
+tr
+  td.project-title= link_to(organization.name, organization_path(organization))
+  td= render partial: 'organizations/partials/role_label', locals: {role: user_organizations_presenter.user_role(organization)}
+  td= render partial: 'organizations/partials/up_monitors', locals: {organization: organization}
+  td.text-right
+    - if user_organizations_presenter.admin?(organization)
+      = render partial: 'organizations/partials/admin_actions', locals: {organization: organization}
+    - else
+      = render partial: 'organizations/partials/member_actions', locals: {organization: organization}

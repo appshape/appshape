@@ -1,0 +1,14 @@
+= render partial: 'organizations/partials/index_bar'
+.row
+  .col-lg-12
+    .wrapper.wrapper-content.animated.fadeInUp
+      .ibox.float-e-margins
+        .ibox-title
+          h5 Create organization
+        .ibox-content
+          = simple_form_for @organization, url: organizations_path, method: :post, html: {class: 'form-horizontal'}do |f|
+            = f.input :name, required: true, wrapper: :horizontal_form_v2
+            .hr-line-dashed
+            .form-group
+              .col-sm-4.col-sm-offset-2
+                = f.submit 'Create', class: 'button btn btn-primary'
