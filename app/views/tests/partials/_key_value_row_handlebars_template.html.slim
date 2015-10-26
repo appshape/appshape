@@ -1,0 +1,9 @@
+script#key-value-row-template type="text/x-handlebars-template"
+  .row.form-group
+    .col-md-6
+      input.form-control name="{{prefix}}[{{timestamp}}][{{key.name}}]" placeholder="{{key.placeholder}}" type="text"
+    .col-md-5
+      input.form-control name="{{prefix}}[{{timestamp}}][{{value.name}}]" placeholder="{{value.placeholder}}" type="text"
+    .col-md-1
+      a.remove-button href=("#")
+        | {{removeButtonText }}

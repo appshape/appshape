@@ -1,0 +1,8 @@
+.row.form-group
+  .col-md-3
+    = form.select :source_code, source_options_for_select(form.object.source_code), { include_blank: false }, { class: 'form-control' }
+  .col-md-8
+    = form.input :property, class: 'form-control', label: false, data: { placeholder_for_enabled: '{{property.placeholder}}', placeholder_for_disabled: '---' }, wrapper: :inline_form_v2
+  .col-md-1
+    a.remove-button href=("#")
+      | Remove

@@ -5,7 +5,7 @@ class CreateRequests < ActiveRecord::Migration
 
       t.column :url, :string, null: false
       t.column :http_method, :string, null: false
-      t.column :description, :text, null: false
+      t.column :description, :text
       t.column :basic_auth_user, :string
       t.column :basic_auth_password, :string
       t.column :headers, :json

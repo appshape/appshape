@@ -11,15 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151014193329) do
+ActiveRecord::Schema.define(version: 20151016073022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "conditions", force: :cascade do |t|
-    t.string   "code",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "code",                          null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.boolean  "value_required", default: true, null: false
   end
 
   create_table "conditions_sources", id: false, force: :cascade do |t|
@@ -55,6 +56,12 @@ ActiveRecord::Schema.define(version: 20151014193329) do
   end
 
   add_index "identities", ["provider", "uid"], name: "index_identities_on_provider_and_uid", unique: true, using: :btree
+
+  create_table "intervals", force: :cascade do |t|
+    t.string   "code",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "locations", force: :cascade do |t|
     t.string   "code",                      null: false
@@ -102,7 +109,7 @@ ActiveRecord::Schema.define(version: 20151014193329) do
     t.integer  "test_id"
     t.string   "url",                 null: false
     t.string   "http_method",         null: false
-    t.text     "description",         null: false
+    t.text     "description"
     t.string   "basic_auth_user"
     t.string   "basic_auth_password"
     t.json     "headers"
@@ -111,6 +118,8 @@ ActiveRecord::Schema.define(version: 20151014193329) do
     t.text     "body"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.json     "assertions"
+    t.json     "data_points"
   end
 
   create_table "sources", force: :cascade do |t|
@@ -122,11 +131,13 @@ ActiveRecord::Schema.define(version: 20151014193329) do
   end
 
   create_table "tests", force: :cascade do |t|
-    t.string   "name",        null: false
+    t.string   "name",                       null: false
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "locations",                array: true
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "locations",                               array: true
+    t.string   "interval",                   null: false
+    t.boolean  "active",      default: true, null: false
   end
 
   create_table "users", force: :cascade do |t|

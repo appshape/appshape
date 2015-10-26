@@ -1,0 +1,13 @@
+script#assertion-row-template  type="text/x-handlebars-template"
+  .row.form-group
+    .col-md-3
+      = select_tag '{{prefix}}[{{timestamp}}][{{source.name}}]', source_options_for_select, include_blank: false, class: 'form-control'
+    .col-md-3
+      = text_field_tag '{{prefix}}[{{timestamp}}][{{property.name}}]', nil, placeholder: '{{property.placeholder}}', class: 'form-control', data: { placeholder_for_enabled: '{{property.placeholder}}', placeholder_for_disabled: '---' }
+    .col-md-2
+      = select_tag '{{prefix}}[{{timestamp}}][{{condition.name}}]', conditions_options_for_chained_select, include_blank: false, class: 'form-control'
+    .col-md-3
+      = text_field_tag '{{prefix}}[{{timestamp}}][{{value.name}}]', nil, placeholder: '{{value.placeholder}}', class: 'form-control'
+    .col-md-1
+      a.remove-button href=("#")
+        | {{removeButtonText}}

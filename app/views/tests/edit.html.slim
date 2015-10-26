@@ -1,4 +1,4 @@
-= simple_form_for @form, wrapper: :horizontal_form_v2, html: { class: 'form-horizontal' } do |f|
+= simple_form_for @form, url: test_path(@form), method: :patch, wrapper: :horizontal_form_v2, html: { class: 'form-horizontal' } do |f|
   = render partial: 'tests/partials/form', locals: { f: f }
 
 = render partial: 'tests/partials/data_point_row_handlebars_template'
