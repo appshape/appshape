@@ -28,8 +28,9 @@ class Tests
   enableHeadersEditor: =>
     new JsonArrayEditor($('#headers'), '#key-value-row-template', {
       fields: {
-        key: { name: 'test[headers][][name]', placeholder: 'Header name'},
-        value: { name: 'test[headers][][value]', placeholder: 'Header value' },
+        prefix: 'test[request_attributes][headers_attributes]'
+        key: { name: 'name', placeholder: 'Header name'},
+        value: { name: 'value', placeholder: 'Header value' },
         removeButtonText: 'Remove'
       },
       addButtonSelector: 'a.headers-add-button',
@@ -39,8 +40,9 @@ class Tests
   enableUrlParametersEditor: =>
     new JsonArrayEditor($('#url-params'), '#key-value-row-template', {
       fields: {
-        key: { name: 'test[url_params][][name]', placeholder: 'Header name'},
-        value: { name: 'test[url_params][][value]', placeholder: 'Header value' },
+        prefix: 'test[request_attributes][url_params_attributes]',
+        key: { name: 'name', placeholder: 'Param name'},
+        value: { name: 'value', placeholder: 'Param value' },
         removeButtonText: 'Remove'
       },
       addButtonSelector: 'a.url-params-add-button',
@@ -49,8 +51,9 @@ class Tests
   enableFormParametersEditor: =>
     new JsonArrayEditor($('#form-params'), '#key-value-row-template', {
       fields: {
-        key: { name: 'test[form_params][][name]', placeholder: 'Header name'},
-        value: { name: 'test[form_params][][value]', placeholder: 'Header value' },
+        prefix: 'test[request_attributes][form_params_attributes]',
+        key: { name: 'name', placeholder: 'Param name'},
+        value: { name: 'value', placeholder: 'Param value' },
         removeButtonText: 'Remove'
       },
       addButtonSelector: 'a.form-params-add-button'
@@ -59,10 +62,11 @@ class Tests
   enableAssertionsEditor: =>
     new JsonArrayEditor($('#assertions'), '#assertion-row-template', {
       fields: {
-        source: { name: 'test[assertions][][source]' },
-        property: { name: 'test[assertions][][property]', placeholder: 'header name or json path or xpath' },
-        condition: { name: 'test[assertions][][condition]' },
-        value: { name: 'test[assertions][][value]', placeholder: 'value' },
+        prefix: 'test[request_attributes][assertions_attributes]',
+        source: { name: 'source_code' },
+        property: { name: 'property', placeholder: 'header name or json path or xpath' },
+        condition: { name: 'condition_code' },
+        value: { name: 'value', placeholder: 'value' },
         removeButtonText: 'Remove'
       },
       addButtonSelector: 'a.assertions-add-button',
@@ -72,8 +76,9 @@ class Tests
   enableDataPointsEditor: =>
     new JsonArrayEditor($('#data-points'), '#data-point-row-template', {
       fields: {
-        source: { name: 'test[data_points][][source]' },
-        property: { name: 'test[data_points][][property]', placeholder: 'header name or json path or xpath' },
+        prefix: 'test[request_attributes][data_points_attributes]',
+        source: { name: 'source_code' },
+        property: { name: 'property', placeholder: 'header name or json path or xpath' },
         removeButtonText: 'Remove'
       },
       addButtonSelector: 'a.data-points-add-button',
@@ -81,11 +86,11 @@ class Tests
     })
 
   enableSourcePlaceholderInteraction: =>
-    $('body').on 'change', 'select[name$="[source]"]', (e) =>
+    $('body').on 'change', 'select[name$="[source_code]"]', (e) =>
       @onSourceSelectChange($(e.target))
 
   onSourceSelectChange: ($select) ->
-    input = $select.parents('.form-group').find('input[name$="[property]"]')
+    input = $select.closest('.form-group').find('input[name$="[property]"]')
     if $select.find(':selected').data('property-required')
       input.prop('disabled', false)
       input.attr('placeholder', input.data('placeholder-for-enabled'))
@@ -105,11 +110,11 @@ class Tests
     })
 
   onNewAssertionRow: (row) =>
-    row.find('select[name$="[condition]"]').chained(row.find('select[name$="[source]"]'))
-    @onSourceSelectChange(row.find('select[name$="[source]"]'))
+    row.find('select[name$="[condition_code]"]').chained(row.find('select[name$="[source_code]"]'))
+    @onSourceSelectChange(row.find('select[name$="[source_code]"]'))
 
   onNewDataPointRow: (row) =>
-    @onSourceSelectChange(row.find('select[name$="[source]"]'))
+    @onSourceSelectChange(row.find('select[name$="[source_code]"]'))
 
   enableActionsToolbar: =>
     $('#sticker').sticky({ className: 'custom-sticked', topSpacing: 0, widthFromWrapper: false });
@@ -117,7 +122,6 @@ class Tests
       e.preventDefault()
       e.stopPropagation()
       document.getElementById($(e.target).attr('rel')).scrollIntoView();
-
 
 $ ->
   new Tests()

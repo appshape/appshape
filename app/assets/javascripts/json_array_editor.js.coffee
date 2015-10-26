@@ -9,7 +9,7 @@ class JsonArrayEditor
     @bindDeleteRowButtons()
     @bindNewRowButton()
 
-    @createRowsForExistingValues(@$element.data('values'))
+    @bindExistingRows()
 
   bindDeleteRowButtons: =>
     @$element.on 'click', 'a.remove-button', @deleteRow
@@ -19,10 +19,11 @@ class JsonArrayEditor
       e.preventDefault()
       e.stopPropagation()
 
-      @createNewRow({})
+      @createNewRow({ timestamp: Date.now() })
 
-  createRowsForExistingValues: (objects) =>
-    @createNewRow object for object in objects
+  bindExistingRows: =>
+    $.each @$element.find('.form-group'), (index, row) =>
+      @options.onRowAdded($(row)) if @options.onRowAdded
 
   createNewRow: (object) =>
     $row = $(@template($.extend(@options.fields, object)))

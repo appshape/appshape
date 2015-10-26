@@ -1,0 +1,8 @@
+.row.form-group
+  .col-md-6
+    = form.input :name, label: false, wrapper: :inline_form_v2
+  .col-md-5
+    = form.input :value, label: false, wrapper: :inline_form_v2
+  .col-md-1
+    a.remove-button href=('#')
+      | Remove

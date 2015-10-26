@@ -1,0 +1,10 @@
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-sm-4
+    h2 Tests
+    ol.breadcrumb
+      li
+        = link_to 'Home', root_path
+      li
+        = link_to 'Tests', tests_path
+      li.active
+        strong = link_to 'New test', new_test_path

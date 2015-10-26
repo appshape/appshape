@@ -21,17 +21,17 @@ gem 'simple_form'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'virtus'
 gem 'seed-fu'
+gem 'reform'
+gem 'ipaddress'
+gem 'nilify_blanks'
 
 group :development, :test do
-  gem 'byebug'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'faker'
 end
 
 group :development do
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
   gem 'letter_opener'
 end
 

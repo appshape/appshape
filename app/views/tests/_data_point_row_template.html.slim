@@ -1,9 +1,0 @@
-script#data-point-row-template  type="text/x-handlebars-template"
-  .row.form-group
-    .col-md-3
-      = select_tag '{{source.name}}', source_options_for_select, include_blank: false, class: 'form-control'
-    .col-md-3
-      = text_field_tag '{{property.name}}', nil, placeholder: '{{property.placeholder}}', class: 'form-control', data: { placeholder_for_enabled: '{{property.placeholder}}', placeholder_for_disabled: '---' }
-    .col-md-1
-      a.remove-button href=("#")
-        | {{removeButtonText}}

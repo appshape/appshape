@@ -72,4 +72,14 @@ en:
   condition_has_key: Has key
   condition_has_value: Has value
   condition_is_null: Is null
+  interval_one_minute: 1 minute
+  interval_two_minutes: 2 minutes
+  interval_three_minutes: 3 minutes
+  interval_four_minutes: 4 minutes
+  interval_five_minutes: 5 minutes
+  interval_ten_minutes: 10 minutes
+  interval_fifteen_minutes: 15 minutes
+  interval_thirty_minutes: 30 minutes
+  interval_one_hour: 1 hour
+  interval_one_day: 1 day
 
