@@ -25,7 +25,7 @@
           .hr-line-dashed
           = f.input :interval, as: :select, collection: Interval.all, value_method: :code, include_blank: false
           .hr-line-dashed
-          = f.input :locations, as: :select, collection: Location.active.all, value_method: :code, input_html: { multiple: true, class: 'select2' }
+          = f.input :locations, as: :select, collection: Location.active.all, value_method: :code, include_hidden: false, include_blank: false, input_html: { multiple: true, class: 'select2' }
           .hr-line-dashed
 
   = f.simple_fields_for :request do |r|
