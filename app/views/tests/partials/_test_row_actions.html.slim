@@ -1,0 +1,17 @@
+= link_to run_test_path(test.id), class: 'btn btn-white btn-sm' do
+  span.fa.fa-forward
+  span.after-icon Run now
+
+= link_to toggle_test_path(test.id), method: :patch, class: 'btn btn-white btn-sm after-button' do
+  span.fa class="#{test.toggle_test_icon}"
+  span.after-icon= test.toggle_test_text
+
+= link_to test_path(test.id), class: 'btn btn-white btn-sm after-button' do
+  span.fa.fa-folder
+  span.after-icon View
+= link_to edit_test_path(test.id), class: 'btn btn-white btn-sm after-button' do
+  span.fa.fa-edit
+  span.after-icon Edit
+= link_to test_path(test.id), method: :delete, class: 'btn btn-white btn-sm after-button' do
+  span.fa.fa-trash
+  span.after-icon Destroy

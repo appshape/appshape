@@ -1,0 +1,10 @@
+tr
+  td
+    span.label class="#{test.label_class}"
+      = test.label_text
+  td.project-title.text-left
+    = link_to test.name, test_path(test.id)
+    br
+    = render partial: 'tests/partials/test_row_last_run', locals: { test: test }
+  td.text-right
+    = render partial: 'tests/partials/test_row_actions', locals: { test: test }
