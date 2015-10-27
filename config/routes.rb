@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   resources :applications
   resources :organizations
   resources :http_headers, only: :index
-  resources :tests
+  resources :tests do
+    member do
+      patch :toggle
+      get :run
+    end
+  end
 
   root 'applications#index'
 end

@@ -1,6 +1,10 @@
 class TestsController < ApplicationController
   def index
-    
+    @tests = Test.all.decorate
+  end
+
+  def show
+    @test = Test.find(params[:id])
   end
 
   def new
@@ -12,7 +16,7 @@ class TestsController < ApplicationController
     @form = TestForm.new(new_test_with_request)
     if @form.validate(test_permitted_params)
       @form.save
-      redirect_to root_path, notice: 'Your test form has been saved!'
+      redirect_to tests_path, notice: 'Your test form has been saved!'
     else
       render action: :new
     end
@@ -26,10 +30,22 @@ class TestsController < ApplicationController
     @form = TestForm.new(Test.find(params[:id]))
     if @form.validate(test_permitted_params)
       @form.save
-      redirect_to root_path, notice: 'Your test has been saved!'
+      redirect_to tests_path, notice: 'Your test has been saved!'
     else
       render :edit
     end
+  end
+
+  def toggle
+    @test = Test.find(params[:id])
+    @test.update_attributes(active: !@test.active)
+    redirect_to :back
+  end
+
+  def destroy
+    @test = Test.find(params[:id])
+    @test.destroy
+    redirect_to :back
   end
 
   private

@@ -83,3 +83,7 @@ en:
   interval_one_hour: 1 hour
   interval_one_day: 1 day
 
+  label_active: "Active"
+  label_inactive: "Inactive"
+  label_disable: "Disable"
+  label_enable: "Enable"

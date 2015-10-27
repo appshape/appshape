@@ -24,6 +24,7 @@ gem 'seed-fu'
 gem 'reform'
 gem 'ipaddress'
 gem 'nilify_blanks'
+gem 'draper'
 
 group :development, :test do
   gem 'rspec-rails'
