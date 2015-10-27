@@ -28,6 +28,7 @@ gem 'nilify_blanks'
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'quiet_assets'
   gem 'faker'
 end
 
