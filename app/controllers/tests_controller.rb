@@ -1,4 +1,8 @@
 class TestsController < ApplicationController
+  def index
+    
+  end
+
   def new
     @form = TestForm.new(new_test_with_request)
     @form.prepopulate!
