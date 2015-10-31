@@ -1,2 +1,83 @@
 - breadcrumb :test, @test
 = render partial: 'shared/site_top_bar', locals: { title: 'Tests' }
+
+
+.row
+  .wrapper.wrapper-content.animated.fadeInUp
+    .col-lg-12
+      .row
+        .col-lg-3
+          .ibox
+            .ibox-content
+              h5 Last 24h
+              h2.no-margins 100%
+        .col-lg-3
+          .ibox
+            .ibox-content
+              h5 Last week
+              h2.no-margins 100%
+        .col-lg-3
+          .ibox
+            .ibox-content
+              h5 Last month
+              h2.no-margins 100%
+        .col-lg-3
+          .ibox
+            .ibox-content
+              h5 All time
+              h2.no-margins 100%
+      .row
+        .col-lg-12
+          .ibox
+            .ibox-title
+              h5 Request statistics
+            .ibox-content
+              p Some statistics
+      .row
+        .col-lg-12
+          .ibox
+            .ibox-title
+              h5 Run history
+            .ibox-content.inspinia-timeline
+              .timeline-item
+                .row
+                  .col-xs-3.date
+                    i.fa.fa-check style="color: green"
+                    | 6:00 am
+                    br/
+                    small.text-navy 2 hours ago
+                  .col-xs-7.content.no-top-border
+                    p.m-b-xs
+                      strong Frankfurt
+                    p
+                      ul.list-inline
+                        li style="color: red" Response time
+                        li style="color: green" Json response
+              .timeline-item
+                .row
+                  .col-xs-3.date
+                    i.fa.fa-exclamation style="color: red"
+                    | 6:00 am
+                    br/
+                    small.text-navy 2 hours ago
+                  .col-xs-7.content.no-top-border
+                    p.m-b-xs
+                      strong Frankfurt
+                    p
+                      ul.list-inline
+                        li style="color: red" Response time
+                        li style="color: green" Json response
+              .timeline-item
+                .row
+                  .col-xs-3.date
+                    i.fa.fa-briefcase style="color: red"
+                    | 6:00 am
+                    br/
+                    small.text-navy 2 hours ago
+                  .col-xs-7.content.no-top-border
+                    p.m-b-xs
+                      strong Frankfurt
+                    p
+                      ul.list-inline
+                        li style="color: red" Response time
+                        li style="color: green" Json response
