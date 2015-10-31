@@ -1,4 +1,4 @@
-class Tests
+class TestForm
   constructor: ->
     @createTypeaheadSourceForHeaders()
 
@@ -124,4 +124,4 @@ class Tests
       document.getElementById($(e.target).attr('rel')).scrollIntoView();
 
 $ ->
-  new Tests()
+  new TestForm() if $('form.test-form').length > 0
