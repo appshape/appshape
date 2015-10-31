@@ -22,7 +22,7 @@
 //= require typeahead/typeahead.bundle.min
 //= require json_array_editor.js.coffee
 //= require select2/select2.full.min
-//= require sticky/jquery.sticky
+
 //= require handlebars/handlebars
 //= require chained/jquery.chained.min
 //= require tests
