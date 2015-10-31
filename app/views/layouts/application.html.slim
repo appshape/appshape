@@ -15,3 +15,6 @@ html
         = render 'layouts/topnavbar'
         = yield
         = render 'layouts/footer'
+
+- content_for :breadcrumbs do
+  - breadcrumbs style: :ol, class: :breadcrumb, current_class: :active

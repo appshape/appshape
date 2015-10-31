@@ -25,6 +25,7 @@ gem 'reform'
 gem 'ipaddress'
 gem 'nilify_blanks'
 gem 'draper'
+gem 'gretel'
 
 group :development, :test do
   gem 'rspec-rails'
