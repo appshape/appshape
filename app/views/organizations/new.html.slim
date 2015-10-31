@@ -1,4 +1,6 @@
-= render partial: 'organizations/partials/index_bar'
+- breadcrumb :organizations
+= render partial: 'shared/site_top_bar', locals: { title: 'Organizations' }
+
 .row
   .col-lg-12
     .wrapper.wrapper-content.animated.fadeInUp
