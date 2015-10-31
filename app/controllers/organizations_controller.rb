@@ -4,20 +4,28 @@ class OrganizationsController < ApplicationController
   end
 
   def new
-    @organization = OrganizationForm.new
+    @organization = OrganizationForm.new(new_organization)
   end
 
   def create
-    @organization = OrganizationForm.new(params[:organization_form])
-    if @organization.valid?
+    @organization = OrganizationForm.new(new_organization)
+    if @organization.validate(organizations_params)
       Organization::OrganizationCreator.new(current_user, @organization.name).execute
-      redirect_to organizations_path
+      redirect_to organizations_path, notice: "Organization #{@organization.name} has been created!"
     else
-      render :new
+      render action: :new
     end
   end
 
   private
+
+  def new_organization
+    Organization.new
+  end
+
+  def organizations_params
+    params.require(:organization).permit!
+  end
 
   def user_organizations_presenter
     UserOrganizationsPresenter.new(current_user)

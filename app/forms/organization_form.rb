@@ -1,5 +1,8 @@
-class OrganizationForm < VirtusForm
-  attribute :name, String
+class OrganizationForm < Reform::Form
+  include Reform::Form::ActiveModel::Validations
+
+  property :name
+
   validates :name, presence: true
   validate :name_is_unique
 
