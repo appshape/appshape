@@ -1,3 +1,6 @@
+- breadcrumb :edit_test, @form
+= render partial: 'shared/site_top_bar', locals: { title: 'Tests' }
+
 = simple_form_for @form, url: test_path(@form), method: :patch, wrapper: :horizontal_form_v2, html: { class: 'form-horizontal' } do |f|
   = render partial: 'tests/partials/form', locals: { f: f }
 
