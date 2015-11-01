@@ -1,0 +1,4 @@
+tr
+  td = user.name
+  td= render partial: 'organizations/partials/role_label', locals: {role: @organization_presenter.user_role(user)}
+  td.text-right contact methods here: message (?internal/email?), github, skype, ?phone?

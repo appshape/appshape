@@ -4,7 +4,7 @@ class OrganizationsController < ApplicationController
   end
 
   def show
-    organization = Organization.find(params[:id])
+    organization = Organization.includes(organization_users: :user).find(params[:id])
     authorize organization
     @organization_presenter = organization_presenter(organization)
   end
