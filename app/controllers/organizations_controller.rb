@@ -3,6 +3,11 @@ class OrganizationsController < ApplicationController
     @user_organizations_presenter = user_organizations_presenter
   end
 
+  def show
+    @organization = Organization.find(params[:id])
+    authorize @organization
+  end
+
   def new
     @organization = OrganizationForm.new(new_organization)
   end
