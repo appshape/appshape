@@ -1,2 +1,2 @@
-- breadcrumb :organization, @organization
-= render partial: 'shared/site_top_bar', locals: { title: @organization.name}
+- breadcrumb :organization, @organization_presenter.organization
+= render partial: 'shared/site_top_bar', locals: { title: @organization_presenter.name}
