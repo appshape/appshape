@@ -8,7 +8,7 @@ crumb :organizations do
 end
 
 crumb :organization do |organization|
-  link organization.name, organization
+  link organization.name, organization_path(organization)
   parent :organizations
 end
 
