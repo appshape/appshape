@@ -1,2 +1,36 @@
 - breadcrumb :organization, @organization_presenter.organization
 = render partial: 'shared/site_top_bar', locals: { title: @organization_presenter.name}
+
+.wrapper.wrapper-content.animated.fadeInUp
+  .row
+    .col-lg-12
+      .ibox.float-e-margins#section-stats
+        .ibox-title
+          h5
+            | Overall stats
+            small &nbsp; accessibility, up/down monitors, response time, latest messages
+          .pull-right
+            a.collapse-link
+              i.fa.fa-chevron-up
+        .ibox-content STATS
+
+  .row
+    .col-lg-12
+      .ibox.float-e-margins#section-projects
+        .ibox-title
+          h5 Projects
+          .pull-right
+            a.collapse-link
+              i.fa.fa-chevron-up
+        .ibox-content PROJECTS
+
+  .row
+    .col-lg-12
+      .ibox.float-e-margins#section-users
+        .ibox-title
+          h5 Users
+          .pull-right
+            a.collapse-link
+              i.fa.fa-chevron-up
+        .ibox-content
+          = render partial: 'organizations/partials/users', locals: {users: @organization_presenter.users}
