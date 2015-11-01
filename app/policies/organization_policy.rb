@@ -10,6 +10,12 @@ class OrganizationPolicy
     organization_user.role == 'admin'
   end
 
+  def show?
+    OrganizationUser.exists?(user: @user, organization: @organization)
+  end
+
+  protected
+
   def organization_user
     @organization_user ||= OrganizationUser.find_by(user: @user, organization: @organization)
   end

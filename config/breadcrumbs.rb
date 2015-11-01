@@ -7,6 +7,11 @@ crumb :organizations do
   parent :root
 end
 
+crumb :organization do |organization|
+  link organization.name, organization
+  parent :organizations
+end
+
 crumb :tests do
   link 'Tests', tests_path
   parent :root
