@@ -22,6 +22,11 @@ crumb :organization_projects do |organization|
   parent :organization, organization
 end
 
+crumb :organization_project do |project|
+  link project.name, organization_project_path(project.organization.id, project.id)
+  parent :organization_projects, project.organization
+end
+
 crumb :new_organization_project do |organization|
   link 'New', new_organization_project_path(organization)
   parent :organization_projects, organization

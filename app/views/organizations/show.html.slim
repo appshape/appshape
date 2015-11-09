@@ -9,9 +9,6 @@
           h5
             | Overall stats
             small &nbsp; accessibility, up/down monitors, response time, latest messages
-          .pull-right
-            a.collapse-link
-              i.fa.fa-chevron-up
         .ibox-content STATS
 
   .row
@@ -19,9 +16,9 @@
       .ibox.float-e-margins#section-projects
         .ibox-title
           h5 Projects
-          .pull-right
-            a.collapse-link
-              i.fa.fa-chevron-up
+          - if policy(@organization_presenter.organization).manage?
+            .ibox-tools
+              = link_to 'Create new project', new_organization_project_path(@organization_presenter.organization), class: 'btn btn-primary btn-xs'
         .ibox-content PROJECTS
 
   .row
