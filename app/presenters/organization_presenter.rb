@@ -1,9 +1,10 @@
 class OrganizationPresenter
   attr_reader :organization
-  delegate :name, :users, to: :organization
+  delegate :name, :users, :projects, :organization_users,
+           to: :organization
 
-  def initialize(organization)
-    @organization = organization
+  def initialize(organization_id)
+    @organization = Organization.includes(:projects, organization_users: :user).find(organization_id)
   end
 
   def user_role(user)

@@ -4,9 +4,8 @@ class OrganizationsController < ApplicationController
   end
 
   def show
-    organization = Organization.includes(organization_users: :user).find(params[:id])
-    authorize organization
-    @organization_presenter = organization_presenter(organization)
+    @organization_presenter = organization_presenter(params[:id])
+    authorize @organization_presenter.organization
   end
 
   def new
@@ -33,8 +32,8 @@ class OrganizationsController < ApplicationController
     params.require(:organization).permit!
   end
 
-  def organization_presenter(organization)
-    OrganizationPresenter.new(organization)
+  def organization_presenter(organization_id)
+    OrganizationPresenter.new(organization_id)
   end
 
   def user_organizations_presenter
