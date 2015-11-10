@@ -26,6 +26,7 @@ gem 'ipaddress'
 gem 'nilify_blanks'
 gem 'draper'
 gem 'gretel'
+gem 'beaneater'
 
 group :development, :test do
   gem 'rspec-rails'
