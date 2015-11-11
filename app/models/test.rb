@@ -3,4 +3,15 @@ class Test < ActiveRecord::Base
 
   has_many :requests, dependent: :delete_all
   has_one :request, autosave: true
+
+  after_touch :cache!
+
+  def cache_key
+    "test-#{self.id}"
+  end
+
+  private
+  def cache!
+    Rails.cache.write(cache_key, TestFormatter.new(self).as_json)
+  end
 end

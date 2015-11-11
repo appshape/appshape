@@ -6,15 +6,18 @@ class TestsForRunQuery
   private
   def query
     <<-SQL
-      select
-        t.id,
-        unnest(t.locations) as location
+      update
+        tests
+      set
+        last_run_at = now()
       from
-        tests t
-        inner join intervals i on (t.interval = i.code)
+        intervals i
       where
-        t.active and
-        t.last_run_at > NOW() - (i.value || ' minutes')::interval
+        tests.interval = i.code
+        tests.active and
+        tests.last_run_at > NOW() - (i.value || ' minutes')::interval
+      returning
+        tests.id
     SQL
   end
 end
