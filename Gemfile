@@ -34,7 +34,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'quiet_assets'
   gem 'faker'
-  gem 'pry'
+  gem 'byebug'
 end
 
 group :development do
