@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20151109003734) do
     t.string   "code",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "value"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -140,13 +141,16 @@ ActiveRecord::Schema.define(version: 20151109003734) do
   end
 
   create_table "tests", force: :cascade do |t|
-    t.string   "name",                       null: false
+    t.string   "name",                           null: false
     t.text     "description"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.string   "locations",                               array: true
-    t.string   "interval",                   null: false
-    t.boolean  "active",      default: true, null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "locations",                                   array: true
+    t.string   "interval",                       null: false
+    t.boolean  "active",          default: true, null: false
+    t.datetime "last_run_at"
+    t.string   "last_run_result"
+    t.integer  "last_run_id"
   end
 
   create_table "users", force: :cascade do |t|
