@@ -26,6 +26,8 @@ gem 'nilify_blanks'
 gem 'draper'
 gem 'gretel'
 gem 'pundit'
+gem 'beaneater'
+gem 'redis-rails'
 
 group :development, :test do
   gem 'rspec-rails'
