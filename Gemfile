@@ -31,6 +31,7 @@ gem 'redis-rails'
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'better_errors'
   gem 'factory_girl_rails'
   gem 'quiet_assets'
   gem 'faker'

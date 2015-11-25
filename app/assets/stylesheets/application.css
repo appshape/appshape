@@ -22,13 +22,3 @@
  *= require typeahead/typeahead
  *= require select2/select2.min
  */
-
-.with-margin-left {
-    margin-left: 5px;
-}
-
-.custom-sticked .action-bar {
-    border-bottom-style: solid !important;
-    border-bottom: 3px;
-    border-color: #e7eaec;
-}

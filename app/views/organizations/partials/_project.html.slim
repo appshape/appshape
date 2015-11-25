@@ -1,0 +1,13 @@
+tr
+  td = project.name
+  td = t('monitors', count: @organization_presenter.projects_test_count(project))
+  td = render partial: 'organizations/partials/up_monitors', locals: {percentage: Random.rand(100) + 1}
+  td.text-right
+    = link_to organization_project_path(@organization_presenter.organization, project), class: 'btn btn-white btn-sm' do
+      span.fa.fa-folder
+      span.after-icon View
+
+    - if policy(project).manage?
+      = link_to edit_organization_project_path(@organization_presenter.organization, project), class: 'btn btn-white btn-sm after-button' do
+        span.fa.fa-pencil
+        span.after-icon Manage

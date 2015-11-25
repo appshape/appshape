@@ -1,6 +1,3 @@
-table.table.table-hover
-  thead
-    td Name
-    td Role
-    td.text-right Contact
-  tbody= render partial: 'organizations/partials/user', collection: users
+.table-without-header
+  table.table.table-hover
+    tbody= render partial: 'organizations/partials/user', collection: users
