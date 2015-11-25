@@ -3,6 +3,7 @@ class Test < ActiveRecord::Base
 
   has_many :requests, dependent: :delete_all
   has_one :request, autosave: true
+  belongs_to :project
 
   after_touch :cache!
 

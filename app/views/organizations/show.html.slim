@@ -19,7 +19,7 @@
           - if policy(@organization_presenter.organization).manage?
             .ibox-tools
               = link_to 'Create new project', new_organization_project_path(@organization_presenter.organization), class: 'btn btn-primary btn-xs'
-        .ibox-content PROJECTS
+        .ibox-content = render partial: 'organizations/partials/projects', locals: {projects: @organization_presenter.projects}
 
   .row
     .col-lg-12
@@ -29,5 +29,4 @@
           .pull-right
             a.collapse-link
               i.fa.fa-chevron-up
-        .ibox-content
-          = render partial: 'organizations/partials/users', locals: {users: @organization_presenter.users}
+        .ibox-content = render partial: 'organizations/partials/users', locals: {users: @organization_presenter.users}
