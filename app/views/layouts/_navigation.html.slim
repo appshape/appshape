@@ -17,8 +17,8 @@ nav.navbar-default.navbar-static-side[role="navigation"]
                 | Logout
         .logo-element
           |  IN+
-      = navigation_link(t('navigation.dashboard'), root_path, :dashboard)
-      = navigation_link(t('navigation.tests'), tests_path, :tests)
+      = navigation_link(t('navigation.dashboard'), 'fa-laptop', root_path, :dashboard)
+      = navigation_link(t('navigation.tests'), 'fa-dot-circle-o', tests_path, :tests)
       = navigation_for_projects(current_user.projects)
-      = navigation_link(t('navigation.organizations'), organizations_path, :organizations)
-      = navigation_link(t('navigation.profile'), '#', nil)
+      = navigation_link(t('navigation.organizations'), 'fa-users', organizations_path, :organizations)
+      = navigation_link(t('navigation.profile'), 'fa-user', '#', nil)
