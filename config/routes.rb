@@ -13,5 +13,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'applications#index'
+  root 'dashboard#index'
 end
