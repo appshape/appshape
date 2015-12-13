@@ -1,9 +1,9 @@
 module NavigationHelper
-  def navigation_link(text, url, controller)
+  def navigation_link(text, icon, url, controller)
     class_name = 'active' if controller && controller_name == controller.to_s
     content_tag(:li, class: class_name) do
       link_to url do
-        concat content_tag(:i, nil, class: 'fa fa-laptop')
+        concat content_tag(:i, nil, class: "fa #{icon}")
         concat content_tag(:span, text, class: 'nav-label')
       end
     end
@@ -14,7 +14,7 @@ module NavigationHelper
       content_tag(:li, class: class_name) do
         capture do
           concat(link_to('#') do
-            concat content_tag(:i, nil, class: 'fa fa-laptop')
+            concat content_tag(:i, nil, class: 'fa fa-codepen')
             concat content_tag(:span, t('navigation.projects'), class: 'nav-label')
             concat content_tag(:span, nil, class: 'fa arrow')
           end)
