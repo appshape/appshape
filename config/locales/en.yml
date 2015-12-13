@@ -76,3 +76,10 @@ en:
     zero: no monitors
     one: 1 monitor
     other: "%{count} monitors"
+  navigation:
+    dashboard: "Dashboard"
+    tests: "Tests"
+    projects: "Projects"
+    ogranizations: "Organizations"
+    organizations: "Organizations"
+    profile: "Profile"
