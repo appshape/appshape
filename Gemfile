@@ -28,10 +28,12 @@ gem 'gretel'
 gem 'pundit'
 gem 'beaneater'
 gem 'redis-rails'
+gem 'friendly_id', '~> 5.1.0'
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'factory_girl_rails'
   gem 'quiet_assets'
   gem 'faker'
