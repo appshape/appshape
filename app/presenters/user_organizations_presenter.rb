@@ -4,7 +4,7 @@ class UserOrganizationsPresenter
   end
 
   def organizations
-    @organizations ||= Organization.order(name: :asc).where('id IN (?)', organization_user_ids)
+    @organizations ||= Organization.includes(:projects, :organization_users).order(name: :asc).where(id: organization_user_ids)
   end
 
   def admin?(organization)

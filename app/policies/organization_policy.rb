@@ -7,7 +7,7 @@ class OrganizationPolicy
   end
 
   def manage?
-    organization_user.role == 'admin'
+    organization_user.present? && organization_user.role == 'admin'
   end
 
   def show?
@@ -17,6 +17,8 @@ class OrganizationPolicy
   protected
 
   def organization_user
-    @organization_user ||= OrganizationUser.find_by(user: @user, organization: @organization)
+    @organization_user ||= organization.organization_users.select do |ou|
+      ou.user_id == @user.id
+    end.first
   end
 end
