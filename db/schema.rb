@@ -11,11 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207202657) do
+ActiveRecord::Schema.define(version: 20151227153808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "pgcrypto"
 
   create_table "conditions", force: :cascade do |t|
     t.string   "code",                          null: false
@@ -31,6 +30,19 @@ ActiveRecord::Schema.define(version: 20151207202657) do
 
   add_index "conditions_sources", ["condition_id"], name: "index_conditions_sources_on_condition_id", using: :btree
   add_index "conditions_sources", ["source_id"], name: "index_conditions_sources_on_source_id", using: :btree
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "http_headers", force: :cascade do |t|
     t.string   "name",       null: false
@@ -88,9 +100,11 @@ ActiveRecord::Schema.define(version: 20151207202657) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "creator_id",              null: false
+    t.string   "slug"
   end
 
   add_index "organizations", ["creator_id"], name: "index_organizations_on_creator_id", using: :btree
+  add_index "organizations", ["slug"], name: "index_organizations_on_slug", unique: true, using: :btree
 
   create_table "project_users", id: false, force: :cascade do |t|
     t.integer "project_id", null: false
@@ -106,13 +120,16 @@ ActiveRecord::Schema.define(version: 20151207202657) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "organization_id"
+    t.string   "slug"
   end
+
+  add_index "projects", ["slug", "organization_id"], name: "index_projects_on_slug_and_organization_id", unique: true, using: :btree
 
   create_table "requests", force: :cascade do |t|
     t.integer  "test_id"
     t.string   "url",                 null: false
     t.string   "http_method",         null: false
-    t.text     "description"
+    t.text     "description",         null: false
     t.string   "basic_auth_user"
     t.string   "basic_auth_password"
     t.json     "headers"
