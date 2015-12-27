@@ -1,4 +1,7 @@
 class Organization < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   has_many :organization_users, dependent: :destroy
   has_many :users, through: :organization_users
   has_many :projects, dependent: :destroy
