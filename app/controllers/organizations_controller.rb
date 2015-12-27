@@ -4,8 +4,9 @@ class OrganizationsController < ApplicationController
   end
 
   def show
-    @organization_presenter = organization_presenter(params[:id])
-    authorize @organization_presenter.organization
+    organization = Organization.includes(projects: :tests, organization_users: :user).friendly.find(params[:id])
+    authorize organization
+    @organization_presenter = organization_presenter(organization)
   end
 
   def new
@@ -16,7 +17,7 @@ class OrganizationsController < ApplicationController
     @organization = OrganizationForm.new(new_organization)
     if @organization.validate(organizations_params)
       created_organization = Organization::OrganizationCreator.new(current_user, @organization.name).execute
-      redirect_to organization_path(created_organization.id), notice: "Organization #{created_organization.name} has been created!"
+      redirect_to organization_path(created_organization), notice: "Organization #{created_organization.name} has been created!"
     else
       render action: :new
     end

@@ -5,7 +5,7 @@ class Organizations::ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.includes(organization: :organization_users).find(params[:id])
+    @project = Project.includes(organization: :organization_users).friendly.find(params[:id])
     authorize @project
   end
 
@@ -19,7 +19,7 @@ class Organizations::ProjectsController < ApplicationController
     authorize @project, :manage?
     if @project.validate(project_params)
       created_project = Project::ProjectCreator.new(@organization, @project.name).execute
-      redirect_to organization_project_path(@organization.id, created_project.id),
+      redirect_to organization_project_path(@organization, created_project),
                   notice: "Project #{created_project.name} has been created!"
     else
       render action: :new
@@ -29,7 +29,7 @@ class Organizations::ProjectsController < ApplicationController
   private
 
   def find_organization
-    @organization = Organization.includes(:organization_users).find(params[:organization_id])
+    @organization = Organization.includes(:organization_users).friendly.find(params[:organization_id])
   end
 
   def new_project
