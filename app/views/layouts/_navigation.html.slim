@@ -19,6 +19,6 @@ nav.navbar-default.navbar-static-side[role="navigation"]
           |  IN+
       = navigation_link(t('navigation.dashboard'), 'fa-laptop', root_path, :dashboard)
       = navigation_link(t('navigation.tests'), 'fa-dot-circle-o', tests_path, :tests)
-      = navigation_for_projects(current_user.projects)
+      = navigation_for_user_projects(current_user)
       = navigation_link(t('navigation.organizations'), 'fa-users', organizations_path, :organizations)
       = navigation_link(t('navigation.profile'), 'fa-user', '#', nil)
