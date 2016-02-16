@@ -8,7 +8,7 @@
         .ibox-title
           h5 Create project
         .ibox-content
-          = simple_form_for [@organization, @project], html: {class: 'form-horizontal'}do |f|
+          = simple_form_for [@organization, @project], url: organization_projects_path, method: :post, html: {class: 'form-horizontal'}do |f|
             = f.input :name, required: true, wrapper: :horizontal_form_v2
             .hr-line-dashed
             .form-group
