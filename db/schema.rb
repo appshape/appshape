@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(version: 20151227153808) do
     t.integer  "test_id"
     t.string   "url",                 null: false
     t.string   "http_method",         null: false
-    t.text     "description",         null: false
+    t.text     "description"
     t.string   "basic_auth_user"
     t.string   "basic_auth_password"
     t.json     "headers"
