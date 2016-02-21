@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   has_one  :personal_organization, class_name: Organization::PersonalOrganization, foreign_key: :creator_id, dependent: :destroy
 
   has_many :projects, through: :organizations
+  has_many :tests, through: :projects
 
   validates :email, presence: true
   validates :name,
