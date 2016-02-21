@@ -1,16 +1,8 @@
 - breadcrumb :tests
 = render partial: 'shared/site_top_bar', locals: { title: 'Tests' }
-.row
-  .col-lg-12
-    .wrapper.wrapper-content.animated.fadeInUp
-      .ibox
-        .ibox-title
-          h5 Tests
-          .ibox-tools
-            = link_to 'Create new test', new_test_path, class: 'btn btn-primary btn-xs'
 
-        .ibox-content
-          .project-list
-            table.table.table-hover
-              tbody
-                = render partial: 'tests/partials/test_row', collection: @tests, as: :test
+- @grouped_tests.each do |project, tests|
+  .row
+    .col-lg-12
+      = render partial: 'tests/partials/tests_table', locals: { tests: TestDecorator.decorate_collection(tests), project: project }
+

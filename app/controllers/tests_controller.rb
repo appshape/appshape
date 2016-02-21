@@ -1,6 +1,6 @@
 class TestsController < ApplicationController
   def index
-    @tests = Test.all.decorate
+    @grouped_tests = Test::Repository.by_user_grouped(current_user)
   end
 
   def show
