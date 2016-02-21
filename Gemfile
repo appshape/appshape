@@ -29,6 +29,7 @@ gem 'pundit'
 gem 'beaneater'
 gem 'redis-rails'
 gem 'friendly_id', '~> 5.1.0'
+gem 'clockwork'
 
 group :development, :test do
   gem 'rspec-rails'
