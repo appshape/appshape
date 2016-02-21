@@ -3,8 +3,8 @@ class OrganizationPresenter
   delegate :name, :users, :projects, :organization_users,
            to: :organization
 
-  def initialize(organization_id)
-    @organization = Organization.includes(projects: :tests, organization_users: :user).find(organization_id)
+  def initialize(organization)
+    @organization = organization
   end
 
   def user_role(user)

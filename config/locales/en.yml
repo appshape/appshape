@@ -1,5 +1,6 @@
 en:
   hello: "Hello world"
+  project_name: 'Appshape'
   resend_confirmation_instructions_title: "Resend confirmation instructions"
   resend_confirmation_instructions_submit: "Resend confirmation instructions"
   back_to_login: "Back to login"

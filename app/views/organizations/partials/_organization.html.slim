@@ -1,7 +1,7 @@
 tr
   td.project-title = link_to(organization.name, organization_path(organization))
   td = render partial: 'organizations/partials/role_label', locals: {role: @user_organizations_presenter.user_role(organization)}
-  td = t('projects', count: organization.projects.count)
+  td = t('projects', count: organization.projects.length)
   td = render partial: 'organizations/partials/up_monitors', locals: {percentage: Random.rand(100) + 1}
   td.text-right
     = link_to organization_path(organization), class: 'btn btn-white btn-sm' do

@@ -29,3 +29,41 @@
     }
   }
 }
+
+.nav-header {
+  height: 120px;
+  width: 100%;
+
+  .nav-header-button {
+    display: flex !important;
+    flex-flow: center;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+    padding: 0;
+
+    .item {
+      flex-grow: 1;
+      height: 100%;
+    }
+
+    .logo {
+      width: 40%;
+
+      > img {
+        max-height: 100%;
+      }
+    }
+
+    .text {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      max-width: 60%;
+      width: 60%;
+      font-size: 1.6em;
+      color: #ffffff;
+    }
+  }
+}
