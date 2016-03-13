@@ -15,6 +15,8 @@ ActiveRecord::Schema.define(version: 20151227153808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pgcrypto"
+  enable_extension "uuid-ossp"
 
   create_table "conditions", force: :cascade do |t|
     t.string   "code",                          null: false
