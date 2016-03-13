@@ -30,6 +30,7 @@ gem 'beaneater'
 gem 'redis-rails'
 gem 'friendly_id', '~> 5.1.0'
 gem 'clockwork'
+gem 'puma'
 
 group :development, :test do
   gem 'rspec-rails'
