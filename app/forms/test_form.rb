@@ -2,11 +2,15 @@ class TestForm < Reform::Form
   include Reform::Form::ActiveModel::Validations
   include Populators::TestFormPopulators
 
+  property :organization
+  property :project_id
   property :name
   property :description
   property :interval
   property :locations
 
+  validates :organization, presence: true
+  validates :project_id, presence: true
   validates :name, presence: true
   validates :interval, inclusion: { in: proc { Interval.pluck(:code) }}
   validates :locations, length: { minimum: 1 }
@@ -57,7 +61,11 @@ class TestForm < Reform::Form
 
   def save
     super do |hash|
+      hash.delete(:organization)
+      project_id = hash.delete(:project_id)
+
       model.request.attributes = hash.delete(:request)
+      model.project = Project.find(project_id) if project_id.present? #Because it was looking by friendly_id
       model.attributes = hash
       model.save
     end

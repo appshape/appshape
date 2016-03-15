@@ -3,7 +3,7 @@
     .ibox-title
       h5= "#{project.organization.name} / #{project.name}"
       .ibox-tools
-        = link_to 'Create new test', new_test_path(organization_id: project.organization_id, project_id: project.id), class: 'btn btn-primary btn-xs'
+        = link_to 'Create new test', new_test_path(organization: project.organization.slug, project: project.slug), class: 'btn btn-primary btn-xs'
 
     .ibox-content
       .project-list

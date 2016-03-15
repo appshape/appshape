@@ -2,10 +2,15 @@ class Organizations::ProjectsController < ApplicationController
   before_action :find_organization
 
   def index
+    authorize @organization
+    @projects = @organization.projects.order(name: :asc)
+    respond_to do |format|
+      format.json {render json: @projects}
+    end
   end
 
   def show
-    @project = Project.includes(organization: :organization_users).friendly.find(params[:id])
+    @project = @organization.projects.includes(organization: :organization_users).friendly.find(params[:id])
     authorize @project
   end
 

@@ -11,10 +11,18 @@ class OrganizationPolicy
   end
 
   def show?
-    OrganizationUser.exists?(user: @user, organization: @organization)
+    user_with_organization?
+  end
+
+  def index?
+    user_with_organization?
   end
 
   protected
+
+  def user_with_organization?
+    OrganizationUser.exists?(user: @user, organization: @organization)
+  end
 
   def organization_user
     @organization_user ||= organization.organization_users.select do |ou|
