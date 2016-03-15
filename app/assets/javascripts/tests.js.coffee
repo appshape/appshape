@@ -3,6 +3,7 @@ class TestForm
     @createTypeaheadSourceForHeaders()
 
     @enableSelect2()
+    @enableDependendProjectsSelect()
     @enableHeadersEditor()
     @enableUrlParametersEditor()
     @enableFormParametersEditor()
@@ -13,8 +14,20 @@ class TestForm
 
     @enableActionsToolbar()
 
-  enableSelect2: =>
+  enableSelect2: ->
     $('.select2').select2()
+
+  enableDependendProjectsSelect: ->
+    $('.organizations-select').change(@organizationChange)
+
+  organizationChange: (event) ->
+    organization_id = event.currentTarget.value
+    $.get("/organizations/#{organization_id}/projects.json", {}, (response) ->
+      $select = $('.dependent-projects-select')
+      $select.html ''
+      for project in response.projects
+        $select.append "<option value='" + project.id + "'>" + project.name + "</option>"
+    , 'json')
 
   createTypeaheadSourceForHeaders: =>
     @httpHeaderBloodhound = new Bloodhound(

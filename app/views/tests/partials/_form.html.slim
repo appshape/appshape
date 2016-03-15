@@ -19,9 +19,13 @@
             a.collapse-link
               i.fa.fa-chevron-up
         .ibox-content
+          = f.input :organization, as: :select, collection: user_organizations(current_user), text_method: :name, selected: f.object.organization.id, include_blank: false, input_html: {class: 'organizations-select'}
+          .hr-line-dashed
+          = f.input :project_id, as: :select, collection: organization_projects(f.object.organization), text_method: :name, selected: f.object.project_id, include_blank: false, input_html: {class: 'dependent-projects-select'}
+          .hr-line-dashed
           = f.input :name
           .hr-line-dashed
-          = f.input :description, as: :string
+          = f.input :description, as: :string, required: false
           .hr-line-dashed
           = f.input :interval, as: :select, collection: Interval.all, value_method: :code, include_blank: false
           .hr-line-dashed

@@ -31,7 +31,6 @@ module NavigationHelper
   private
 
   def user_projects(user)
-    organization_ids = User.find(user.id).organizations.pluck(:id)
-    Project.includes(:organization).order('organizations.name ASC, projects.name ASC').where(organization_id: organization_ids)
+    user.projects.order(name: :asc)
   end
 end

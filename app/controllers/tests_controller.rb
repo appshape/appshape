@@ -18,16 +18,17 @@ class TestsController < ApplicationController
       @form.save
       redirect_to tests_path, notice: 'Your test form has been saved!'
     else
+      @form.organization = current_user.organizations.friendly.find(test_permitted_params[:organization])
       render action: :new
     end
   end
 
   def edit
-    @form = TestForm.new(Test.find(params[:id]))
+    @form = TestForm.new(Test.find(params[:id])) #FIXME: bieda security
   end
 
   def update
-    @form = TestForm.new(Test.find(params[:id]))
+    @form = TestForm.new(Test.find(params[:id])) #FIXME: bieda security
     if @form.validate(test_permitted_params)
       @form.save
       redirect_to tests_path, notice: 'Your test has been saved!'
@@ -64,7 +65,21 @@ class TestsController < ApplicationController
 
   def new_test_with_request
     Test.new(locations: []).tap do |test|
+      test.organization = user_organization
+      test.project = user_project
       test.build_request(headers: [], url_params: [], form_params: [], assertions: [], data_points: [])
     end
+  end
+
+  def user_project
+    user_organization.projects.friendly.find(params[:project]) if params[:project]
+  rescue ActiveRecord::RecordNotFound
+    nil
+  end
+
+  def user_organization
+    current_user.organizations.friendly.find(params[:organization])
+  rescue ActiveRecord::RecordNotFound
+    current_user.personal_organization
   end
 end
