@@ -6,7 +6,7 @@ class Test < ActiveRecord::Base
   belongs_to :project
   has_one :organization, through: :project
 
-  after_touch :cache!
+  after_save :cache!
 
   def cache_key
     "test-#{self.id}"
