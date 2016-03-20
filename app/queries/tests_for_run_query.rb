@@ -16,7 +16,7 @@ class TestsForRunQuery
         where
           tests.interval = i.code and
           tests.active and
-          tests.last_run_at < NOW() - (i.value || ' minutes')::interval
+          (tests.last_run_at is null or tests.last_run_at < NOW() - (i.value || ' minutes')::interval)
         returning
           tests.id, tests.locations, now() as created_at, uuid_generate_v1() as grouping_code
       ),
