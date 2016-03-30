@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151227153808) do
+ActiveRecord::Schema.define(version: 20160330161650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -152,6 +152,21 @@ ActiveRecord::Schema.define(version: 20151227153808) do
     t.datetime "updated_at",                        null: false
   end
 
+  create_table "test_run_groups", force: :cascade do |t|
+    t.integer  "test_id",                       null: false
+    t.string   "grouping_code",                 null: false
+    t.integer  "result"
+    t.integer  "status",            default: 0, null: false
+    t.datetime "started_at"
+    t.datetime "finished_at"
+    t.decimal  "avg_response_time"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "test_run_groups", ["grouping_code"], name: "index_test_run_groups_on_grouping_code", unique: true, using: :btree
+  add_index "test_run_groups", ["test_id"], name: "index_test_run_groups_on_test_id", using: :btree
+
   create_table "test_runs", force: :cascade do |t|
     t.integer  "test_id",                                null: false
     t.string   "location",                               null: false
@@ -204,5 +219,8 @@ ActiveRecord::Schema.define(version: 20151227153808) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "projects", "organizations"
+  add_foreign_key "test_run_groups", "tests"
+  add_foreign_key "test_runs", "test_run_groups", column: "grouping_code", primary_key: "grouping_code"
+  add_foreign_key "test_runs", "tests"
   add_foreign_key "tests", "projects"
 end
