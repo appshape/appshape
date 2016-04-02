@@ -26,11 +26,21 @@ class TestRunScheduler
   def scheduled_tests_data
     @scheduled_tests_data ||= begin
       test_cache_keys = scheduled_test_ids.map { |test_id| test_cache_key(test_id) }
-      Rails.cache.read_multi(test_cache_keys).inject({}) do |memo, (_, test_data)|
+      fetch_cached_tests(test_cache_keys).inject({}) do |memo, (_, test_data)|
         memo[test_data['id']] = test_data
         memo
       end || {}
     end
+  end
+
+  def fetch_cached_tests(keys)
+    Rails.cache.fetch_multi(*keys) { |key| formatted_test_by_cache_key(key) }
+  end
+
+  def formatted_test_by_cache_key(key)
+    test_id = key.gsub('test-', '').to_i
+    test = Test.find(test_id)
+    TestFormatter.new(test).as_json
   end
 
   def test_cache_key(id)
