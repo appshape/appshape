@@ -12,7 +12,6 @@ class Test < ActiveRecord::Base
     "test-#{self.id}"
   end
 
-  private
   def cache!
     Rails.cache.write(cache_key, TestFormatter.new(self).as_json)
   end
