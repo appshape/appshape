@@ -28,10 +28,12 @@ gem 'gretel'
 gem 'pundit'
 gem 'beaneater'
 gem 'redis-rails'
+gem 'redis'
 gem 'friendly_id', '~> 5.1.0'
 gem 'clockwork'
 gem 'puma'
 gem 'active_model_serializers'
+gem 'connection_pool'
 
 group :development, :test do
   gem 'rspec-rails'

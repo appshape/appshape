@@ -2,11 +2,20 @@ class TestRunScheduler
   def execute
     test_runs.each do |test_run|
       test_data = cached_test_data[test_run['test_id'].to_i]
-      schedule_test_run(test_run, test_data) unless test_data.empty?
+      unless test_data.empty?
+        set_test_run_group_countdown(test_run)
+        schedule_test_run(test_run, test_data)
+      end
     end
   end
 
   private
+  def set_test_run_group_countdown(test_run)
+    $redis.with do |connection|
+      connection.hsetnx('test_run_groups', test_run['grouping_code'],  test_run['runs_in_group_count'].to_i)
+    end
+  end
+
   def schedule_test_run(test_run, test_data)
     tube = beanstalk.tubes.find("tests-#{test_run['location']}-queue")
     tube.put(test_data.merge({

@@ -69,6 +69,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    connection_pool (2.2.0)
     debug_inspector (0.0.2)
     devise (3.5.2)
       bcrypt (~> 3.0)
@@ -296,6 +297,7 @@ DEPENDENCIES
   byebug
   clockwork
   coffee-rails (~> 4.1.0)
+  connection_pool
   devise
   dotenv-rails
   draper
@@ -318,6 +320,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.4)
   rails-i18n (~> 4.0.0)
+  redis
   redis-rails
   reform
   rspec-rails
