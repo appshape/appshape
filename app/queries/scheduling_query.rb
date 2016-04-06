@@ -1,4 +1,4 @@
-class TestsForRunQuery
+class SchedulingQuery
   def execute
     Test.connection.select_all(query)
   end
